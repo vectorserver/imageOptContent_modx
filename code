@@ -5,7 +5,7 @@ switch($eventName) {
         $content = $modx->resource->get('content');
         
         $regex = '#<img([^>]*) src="([^"/]*/?[^".]*\.[^"]*)"([^>]*)>((?!</a>))#';
-        $replace = '<a rel="group" class="fancybox fancy" title="" href="$2"><img$1 src="[[phpthumbof? &input=`$2` &options=`w=1070&q=75`]]"$3></a>';
+        $replace = '<img$1 src="[[phpthumbof? &input=`$2` &options=`w=1070&q=75`]]"$3>';
         
         $content = preg_replace($regex, $replace, $content);
          $modx->resource->set('content', $content);
